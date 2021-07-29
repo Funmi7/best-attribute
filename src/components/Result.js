@@ -17,10 +17,10 @@ const Container = styled.div`
     font-size: 40px;
     margin-top: 5px;
   }
-  h4{
-    margin-top:0px;
+  h4 {
+    margin-top: 0px;
   }
-  .result-details-header{
+  .result-details-header {
     font-size: 20px;
   }
 `;
