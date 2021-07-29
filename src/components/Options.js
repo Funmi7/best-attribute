@@ -62,7 +62,7 @@ const Options = ({ currentQuestion, data, handleOptionClick }) => {
         <DescriptionText>Please select your strengths below</DescriptionText>
       ) : (
         <DescriptionText>
-          Please select your weaknesses below.Don’t worry about the options, it
+          Please select your weaknesses below. Don’t worry about the options, it
           doesn’t mean this is who you are.
         </DescriptionText>
       )}
