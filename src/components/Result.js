@@ -11,6 +11,7 @@ const Container = styled.div`
   h3,
   p {
     color: white;
+    padding: 0px 20px;
   }
   h3 {
     font-size: 40px;

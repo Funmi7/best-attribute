@@ -9,14 +9,21 @@ const QuestionCard = styled.div`
   background: #2d26a8;
   box-shadow: 5px 5px 20px 0 #171d3b;
   width: 50%;
-  height: 300px;
+  min-height: 250px;
+  padding: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
+  margin-bottom: 30px;
 
   button {
-    width: 300px;
+    /* width: 300px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-basis: 47%;
     height: 70px;
     border-radius: 10px;
     border: none;
@@ -27,8 +34,23 @@ const QuestionCard = styled.div`
       color: white;
     }
   }
+  @media screen and (max-width: 870px) {
+    width: 80%;
+  }
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+
+    button {
+      flex-basis: auto;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
 `;
 
+const DescriptionText = styled.h4`
+  padding: 0px 20px;
+`;
 
 const Options = ({ currentQuestion, data, handleOptionClick }) => {
   return (
@@ -37,12 +59,12 @@ const Options = ({ currentQuestion, data, handleOptionClick }) => {
         Question {currentQuestion + 1} of {data.length}
       </p>
       {currentQuestion <= 9 ? (
-        <h4>Please select your strengths below</h4>
+        <DescriptionText>Please select your strengths below</DescriptionText>
       ) : (
-        <h4>
+        <DescriptionText>
           Please select your weaknesses below.Don’t worry about the options, it
           doesn’t mean this is who you are.
-        </h4>
+        </DescriptionText>
       )}
       <QuestionCard>
         {data[currentQuestion].options.map((option, index) => (
@@ -57,4 +79,4 @@ const Options = ({ currentQuestion, data, handleOptionClick }) => {
   );
 };
 
-export default Options
+export default Options;

@@ -13,6 +13,8 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* padding-left: 20px; */
+  /* padding-right: 20px; */
   h1,
   h2,
   h3,
@@ -29,6 +31,10 @@ const Heading = styled.h2`
   margin-top: 0px;
   padding-top: 50px;
   color: white;
+
+  @media screen and (max-width: 307px){
+    padding: 30px 15px;
+  }
 `;
 
 const ImageWrapper = styled.div`
@@ -37,6 +43,12 @@ const ImageWrapper = styled.div`
   justify-content: center;
   img {
     width: 400px;
+  }
+  @media screen and (max-width: 307px) {
+    padding: 10px 15px;
+    img {
+      width: 100%;
+    }
   }
 `;
 
