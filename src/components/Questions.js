@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { data, personalities } from "../data/Data";
+import personalityImage from "../images/personality-illust-1.svg";
 
 const Container = styled.section`
   background: #080a16;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
+
+  h4,
+  p {
+    color: white;
+  }
 `;
 
 const Heading = styled.h2`
@@ -23,6 +29,15 @@ const QuestionCard = styled.div`
     transparent 1px,
     rgba(0, 0, 0, 0.3) 2px
   );
+`;
+
+const ImageWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  img {
+    width: 400px;
+  }
 `;
 
 const Questions = () => {
@@ -49,18 +64,31 @@ const Questions = () => {
   return (
     <Container>
       <Heading>What's your personality?</Heading>
+      <ImageWrapper>
+        <img src={personalityImage} alt="personality illustration" />
+      </ImageWrapper>
       {showResult ? (
-        <h3 style={{ color: "white" }}>You you are : {personalityResult}</h3>
+        <h3 style={{ color: "white" }}>You are : {personalityResult}</h3>
       ) : (
         <div>
           <p>
             Question {currentQuestion + 1} of {data.length}
           </p>
+          {currentQuestion <= 9 ? (
+            <h4>Please select your strenghts below</h4>
+          ) : (
+            <h4>
+              Please select your weaknesses below.Don’t worry about the options,
+              it doesn’t mean this is who you are.
+            </h4>
+          )}
           <div>
-            {data[currentQuestion].options.map((option) => (
-              <button onClick={() => handleOptionClick(option.personality)}>
-                {option.option}
-              </button>
+            {data[currentQuestion].options.map((option, index) => (
+              <>
+                <button onClick={() => handleOptionClick(option.personality)}>
+                  {option.option}
+                </button>
+              </>
             ))}
           </div>
         </div>

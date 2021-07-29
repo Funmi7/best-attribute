@@ -1,5 +1,7 @@
 export const data = [
+  // strengths
   {
+    
     options: [
       { option: "Adventorous", personality: "Leader" },
       { option: "Adaptable", personality: "Analyst" },
@@ -77,6 +79,88 @@ export const data = [
       { option: "Faithful", personality: "Workaholic" },
       { option: "Funny", personality: "Carefree" },
       { option: "Forceful	", personality: "Leader" },
+    ],
+  },
+
+  // weaknesses
+  {
+    options: [
+      { option: "Blank", personality: "Analyst" },
+      { option: "Bashful", personality: "Workaholic" },
+      { option: "Brassy", personality: "Carefree" },
+      { option: "Bossy", personality: "Leader" },
+    ],
+  },
+  {
+    options: [
+      { option: "Undisciplined", personality: "Carefree" },
+      { option: "Unsympathetic", personality: "Leader" },
+      { option: "Unenthusiastic", personality: "Analyst" },
+      { option: "Unforgiving", personality: "Workaholic" },
+    ],
+  },
+  {
+    options: [
+      { option: "Reticent", personality: "Analyst" },
+      { option: "Resentful", personality: "Workaholic" },
+      { option: "Resistant", personality: "Leader" },
+      { option: "Repetitious", personality: "Carefree" },
+    ],
+  },
+  {
+    options: [
+      { option: "Fussy", personality: "Workaholic" },
+      { option: "Fearful", personality: "Analyst" },
+      { option: "Forgetful", personality: "Carefree" },
+      { option: "Frank", personality: "Leader" },
+    ],
+  },
+  {
+    options: [
+      { option: "Impatient", personality: "Leader" },
+      { option: "Insecure", personality: "Workaholic" },
+      { option: "Indecisive", personality: "Analyst" },
+      { option: "Interrupts", personality: "Carefree" },
+    ],
+  },
+  {
+    options: [
+      { option: "Unpopular", personality: "Workaholic" },
+      { option: "Uninvolved", personality: "Analyst" },
+      { option: "Unpredictable", personality: "Carefree" },
+      { option: "Unaffectionate", personality: "Leader" },
+    ],
+  },
+  {
+    options: [
+      { option: "Worrier", personality: "Analyst" },
+      { option: "Withdrawn", personality: "Workaholic" },
+      { option: "Workaholic", personality: "Leader" },
+      { option: "Wants Credit", personality: "Carefree" },
+    ],
+  },
+  {
+    options: [
+      { option: "Too Sensitive", personality: "Workaholic" },
+      { option: "Tactless", personality: "Leader" },
+      { option: "Timid", personality: "Analyst" },
+      { option: "Talkative", personality: "Carefree" },
+    ],
+  },
+  {
+    options: [
+      { option: "Messy", personality: "Carefree" },
+      { option: "Moody", personality: "Workaholic" },
+      { option: "Mumbles", personality: "Analyst" },
+      { option: "Manipulative", personality: "Leader" },
+    ],
+  },
+  {
+    options: [
+      { option: "Slow", personality: "Analyst" },
+      { option: "Stubborn", personality: "Leader" },
+      { option: "Show-off", personality: "Carefree" },
+      { option: "Skeptical", personality: "Workaholic" },
     ],
   },
 ];
