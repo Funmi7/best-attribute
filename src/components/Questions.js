@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { data, personalities } from "../data/Data";
 import personalityImage from "../images/personality-illust-1.svg";
 import { fadeIn } from "react-animations";
+import Result from "./Result";
 
 const Container = styled.section`
   background: #080a16;
@@ -63,25 +64,6 @@ const ImageWrapper = styled.div`
   justify-content: center;
   img {
     width: 400px;
-  }
-`;
-
-const TryAgainButton = styled.div`
-  background: #2d26a8;
-  width: 200px;
-  height: 50px;
-  border-radius: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 60px;
-  color: white;
-  margin-bottom: 40px;
-
-  &:hover {
-    background: white;
-    color: black;
   }
 `;
 
@@ -146,25 +128,10 @@ const Questions = () => {
         <img src={personalityImage} alt="personality illustration" />
       </ImageWrapper>
       {showResult ? (
-        <>
-          <h4>Your most dominant personality type is</h4>
-          <h3>{personalityResult.firstPersonality} with {personalityResult.firstScore} points</h3>
-
-          <h4>Result Details</h4>
-          <p>
-            Your second personality type is {personalityResult.secondPersonality}{" "}
-            with {personalityResult.secondScore} points
-          </p>
-          <p>
-            Your third personality type is {personalityResult.thirdPersonality} with{" "}
-            {personalityResult.thirdScore} points
-          </p>
-          <p>
-            Your fourth personality type is {personalityResult.fourthPersonality}{" "}
-            with {personalityResult.fourthScore} points
-          </p>
-          <TryAgainButton onClick={refreshPage}>Try Again</TryAgainButton>
-        </>
+        <Result
+          refreshPage={refreshPage}
+          personalityResult={personalityResult}
+        />
       ) : (
         <>
           <p>
