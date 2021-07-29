@@ -2,13 +2,26 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   h4,
   h3,
   p {
     color: white;
+    padding: 0px 20px;
   }
   h3 {
     font-size: 40px;
+    margin-top: 5px;
+  }
+  h4 {
+    margin-top: 0px;
+  }
+  .result-details-header {
+    font-size: 20px;
   }
 `;
 const TryAgainButton = styled.div`
@@ -20,7 +33,7 @@ const TryAgainButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 30px;
   color: white;
   margin-bottom: 40px;
 
@@ -40,7 +53,7 @@ const Result = ({ personalityResult, refreshPage }) => {
           {personalityResult.firstScore} points
         </h3>
 
-        <h4>Result Details</h4>
+        <h4 className="result-details-header">Result Details</h4>
         <p>
           Your second personality type is {personalityResult.secondPersonality}{" "}
           with {personalityResult.secondScore} points

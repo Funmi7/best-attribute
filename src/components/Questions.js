@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { data, personalities } from "../data/Data";
 import personalityImage from "../images/personality-illust-1.svg";
-import { fadeIn } from "react-animations";
+import Options from "./Options";
+
 import Result from "./Result";
 
 const Container = styled.section`
@@ -12,6 +13,8 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* padding-left: 20px; */
+  /* padding-right: 20px; */
   h1,
   h2,
   h3,
@@ -20,7 +23,6 @@ const Container = styled.section`
     color: white;
   }
   h3 {
-    /* color: #2d26a8; */
     font-size: 40px;
   }
 `;
@@ -29,32 +31,9 @@ const Heading = styled.h2`
   margin-top: 0px;
   padding-top: 50px;
   color: white;
-`;
 
-const QuestionCard = styled.div`
-  animation: 2s ${keyframes`${fadeIn}`};
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
-  background: #2d26a8;
-  box-shadow: 5px 5px 20px 0 #171d3b;
-  width: 50%;
-  height: 300px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-
-  button {
-    width: 300px;
-    height: 70px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-
-    &:hover {
-      background: rgb(45, 55, 72);
-      color: white;
-    }
+  @media screen and (max-width: 307px){
+    padding: 30px 15px;
   }
 `;
 
@@ -64,6 +43,12 @@ const ImageWrapper = styled.div`
   justify-content: center;
   img {
     width: 400px;
+  }
+  @media screen and (max-width: 307px) {
+    padding: 10px 15px;
+    img {
+      width: 100%;
+    }
   }
 `;
 
@@ -80,8 +65,6 @@ const Questions = () => {
     thirdScore: "",
     fourthScore: "",
   });
-  // const [personalityScoreSecond, setPersonalityResultSecond] = useState("");
-  // const [personalityScoreThird, se]
 
   const handleOptionClick = (personality) => {
     personalities.find((attr) => attr.id === personality).points += 1;
@@ -133,28 +116,11 @@ const Questions = () => {
           personalityResult={personalityResult}
         />
       ) : (
-        <>
-          <p>
-            Question {currentQuestion + 1} of {data.length}
-          </p>
-          {currentQuestion <= 9 ? (
-            <h4>Please select your strengths below</h4>
-          ) : (
-            <h4>
-              Please select your weaknesses below.Don’t worry about the options,
-              it doesn’t mean this is who you are.
-            </h4>
-          )}
-          <QuestionCard>
-            {data[currentQuestion].options.map((option, index) => (
-              <>
-                <button onClick={() => handleOptionClick(option.personality)}>
-                  {option.option}
-                </button>
-              </>
-            ))}
-          </QuestionCard>
-        </>
+        <Options
+          data={data}
+          currentQuestion={currentQuestion}
+          handleOptionClick={handleOptionClick}
+        />
       )}
     </Container>
   );
