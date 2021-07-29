@@ -77,6 +77,7 @@ const TryAgainButton = styled.div`
   justify-content: center;
   margin-top: 60px;
   color: white;
+  margin-bottom: 40px;
 
   &:hover {
     background: white;
@@ -87,7 +88,18 @@ const TryAgainButton = styled.div`
 const Questions = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResult, setShowResult] = useState(false);
-  const [personalityResult, setPersonalityResult] = useState("");
+  const [personalityResult, setPersonalityResult] = useState({
+    firstPersonality: "",
+    secondPersonality: "",
+    thirdPersonality: "",
+    fourthPersonality: "",
+    firstScore: "",
+    secondScore: "",
+    thirdScore: "",
+    fourthScore: "",
+  });
+  // const [personalityScoreSecond, setPersonalityResultSecond] = useState("");
+  // const [personalityScoreThird, se]
 
   const handleOptionClick = (personality) => {
     personalities.find((attr) => attr.id === personality).points += 1;
@@ -98,9 +110,26 @@ const Questions = () => {
     } else {
       let finalPersonality = personalities.sort(function (a, b) {
         return b.points - a.points;
-      })[0];
-      setPersonalityResult(finalPersonality.name);
+      });
+
+      const firstAttr = finalPersonality[0];
+      const secondAttr = finalPersonality[1];
+      const thirdAttr = finalPersonality[2];
+      const fourthAttr = finalPersonality[3];
+
+      setPersonalityResult({
+        ...personalityResult,
+        firstPersonality: firstAttr.name,
+        secondPersonality: secondAttr.name,
+        thirdPersonality: thirdAttr.name,
+        fourthPersonality: fourthAttr.name,
+        firstScore: firstAttr.points,
+        secondScore: secondAttr.points,
+        thirdScore: thirdAttr.points,
+        fourthScore: fourthAttr.points,
+      });
       setShowResult(true);
+      console.log(personalityResult.firstPersonality);
     }
   };
 
@@ -118,8 +147,22 @@ const Questions = () => {
       </ImageWrapper>
       {showResult ? (
         <>
-          <h4>You are </h4>
-          <h3>{personalityResult.toUpperCase()}</h3>
+          <h4>Your most dominant personality type is</h4>
+          <h3>{personalityResult.firstPersonality} with {personalityResult.firstScore} points</h3>
+
+          <h4>Result Details</h4>
+          <p>
+            Your second personality type is {personalityResult.secondPersonality}{" "}
+            with {personalityResult.secondScore} points
+          </p>
+          <p>
+            Your third personality type is {personalityResult.thirdPersonality} with{" "}
+            {personalityResult.thirdScore} points
+          </p>
+          <p>
+            Your fourth personality type is {personalityResult.fourthPersonality}{" "}
+            with {personalityResult.fourthScore} points
+          </p>
           <TryAgainButton onClick={refreshPage}>Try Again</TryAgainButton>
         </>
       ) : (
@@ -128,7 +171,7 @@ const Questions = () => {
             Question {currentQuestion + 1} of {data.length}
           </p>
           {currentQuestion <= 9 ? (
-            <h4>Please select your strenghts below</h4>
+            <h4>Please select your strengths below</h4>
           ) : (
             <h4>
               Please select your weaknesses below.Don’t worry about the options,
