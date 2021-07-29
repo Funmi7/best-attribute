@@ -80,3 +80,26 @@ export const data = [
     ],
   },
 ];
+
+export const personalities = [
+  {
+    id: "Carefree",
+    name: "Carefree",
+    points: 0,
+  },
+  {
+    id: "Leader",
+    name: "Leader",
+    points: 0,
+  },
+  {
+    id: "Workaholic",
+    name: "Workaholic",
+    points: 0,
+  },
+  {
+    id: "Analyst",
+    name: "Analyst",
+    points: 0,
+  },
+];
