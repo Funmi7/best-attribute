@@ -7,7 +7,12 @@ const Container = styled.section`
   background: #080a16;
   min-height: 100vh;
   width: 100%;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1,
+  h2,
+  h3,
   h4,
   p {
     color: white;
@@ -23,12 +28,27 @@ const Heading = styled.h2`
 const QuestionCard = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
-  background: repeating-linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.3),
-    transparent 1px,
-    rgba(0, 0, 0, 0.3) 2px
-  );
+  background: #2d26a8;
+  box-shadow: 5px 5px 20px 0 #171d3b;
+  width: 50%;
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+
+  button {
+    width: 300px;
+    height: 70px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background: rgb(45, 55, 72);
+      color: white;
+    }
+  }
 `;
 
 const ImageWrapper = styled.div`
@@ -68,9 +88,12 @@ const Questions = () => {
         <img src={personalityImage} alt="personality illustration" />
       </ImageWrapper>
       {showResult ? (
-        <h3 style={{ color: "white" }}>You are : {personalityResult}</h3>
+        <>
+          <h3>You are </h3>
+          <h2> {personalityResult}</h2>
+        </>
       ) : (
-        <div>
+        <>
           <p>
             Question {currentQuestion + 1} of {data.length}
           </p>
@@ -82,7 +105,7 @@ const Questions = () => {
               it doesn’t mean this is who you are.
             </h4>
           )}
-          <div>
+          <QuestionCard>
             {data[currentQuestion].options.map((option, index) => (
               <>
                 <button onClick={() => handleOptionClick(option.personality)}>
@@ -90,8 +113,8 @@ const Questions = () => {
                 </button>
               </>
             ))}
-          </div>
-        </div>
+          </QuestionCard>
+        </>
       )}
     </Container>
   );
