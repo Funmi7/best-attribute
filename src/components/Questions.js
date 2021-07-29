@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { data, personalities } from "../data/Data";
 import personalityImage from "../images/personality-illust-1.svg";
+import { fadeIn } from "react-animations";
 
 const Container = styled.section`
   background: #080a16;
@@ -17,6 +18,10 @@ const Container = styled.section`
   p {
     color: white;
   }
+  h3 {
+    /* color: #2d26a8; */
+    font-size: 40px;
+  }
 `;
 
 const Heading = styled.h2`
@@ -26,6 +31,7 @@ const Heading = styled.h2`
 `;
 
 const QuestionCard = styled.div`
+  animation: 2s ${keyframes`${fadeIn}`};
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
   background: #2d26a8;
@@ -60,6 +66,24 @@ const ImageWrapper = styled.div`
   }
 `;
 
+const TryAgainButton = styled.div`
+  background: #2d26a8;
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+  color: white;
+
+  &:hover {
+    background: white;
+    color: black;
+  }
+`;
+
 const Questions = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResult, setShowResult] = useState(false);
@@ -79,6 +103,11 @@ const Questions = () => {
       setShowResult(true);
     }
   };
+
+  const refreshPage = () => {
+    window.location.reload();
+    return false;
+  };
   console.log(showResult);
   console.log(personalityResult);
   return (
@@ -89,8 +118,9 @@ const Questions = () => {
       </ImageWrapper>
       {showResult ? (
         <>
-          <h3>You are </h3>
-          <h2> {personalityResult}</h2>
+          <h4>You are </h4>
+          <h3>{personalityResult.toUpperCase()}</h3>
+          <TryAgainButton onClick={refreshPage}>Try Again</TryAgainButton>
         </>
       ) : (
         <>
