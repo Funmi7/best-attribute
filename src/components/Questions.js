@@ -13,8 +13,6 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding-left: 20px; */
-  /* padding-right: 20px; */
   h1,
   h2,
   h3,
